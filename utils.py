@@ -68,13 +68,8 @@ def ennemys_turn(rpg_data,player_name) -> None:
     """plays enemy's turn
     player's health should decrease randomly by 5-20 hp
     """
-<<<<<<< HEAD
-    print('\n Boss plays\n')
-    rpg_data["player_hp"] -= (10+randint(0,10))
-=======
     degats = 7+randint(0,8)
     rpg_data["player_hp"] -= (degats)
->>>>>>> b918295bbfe8da422d8b2e54f5faceddf64520a2
     rpg_data["turn"]+=1
     if rpg_data["player_hp"] < 0:
         rpg_data["player_hp"]= 0
