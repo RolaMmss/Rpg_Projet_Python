@@ -49,7 +49,6 @@ while player_is_alive(rpg_data) and enemy_is_alive(rpg_data):          # Check h
 >>>>>>> 072be81929ad3839fd61b2f06fe90a0bfc134099
     # Check if enemy is still alive
     # if enemy_is_alive():
-        print(rpg_data)
         # display the status of player : name, hp, number of potions left      
 <<<<<<< HEAD
         afficher_status(rpg_data)    
@@ -85,7 +84,9 @@ while player_is_alive(rpg_data) and enemy_is_alive(rpg_data):          # Check h
 =======
             ennemys_turn(rpg_data)
 
-print('Fin du jeu')
+
+display_status(rpg_data, player_name)
+print('\nFin du jeu')
 if enemy_is_alive(rpg_data):
     print ('GAME OVER')
 else:
