@@ -22,8 +22,21 @@ def enemy_is_alive(rpg_data) -> bool:
     return False
     
 
-def afficher_status() ->None:
-    pass
+def display_status(rpg_data) ->None:
+    """_summary_
+    Display characters with names, healths, and potions
+    """
+    print(" ",
+        player_name, "                           [BOSS NAME]", "\n",
+        " HP : ", rpg_data["player_hp"], "/ 50                      HP : ", rpg_data["enemy_hp"], "/ 50","\n",
+        " ",("◊")*rpg_data["potion_number"], "\n",
+        "       ", rpg_data["player_line_1"], "                  ", rpg_data["boss_line_1"], "\n",
+        "       ", rpg_data["player_line_1"], "                  ", rpg_data["boss_line_2"], "\n",
+        "       ", rpg_data["player_line_1"], "                  ", rpg_data["boss_line_1"], "\n",
+        "       ", rpg_data["player_line_4"], "                  ", rpg_data["boss_line_4"], "\n",
+        "       ", rpg_data["player_line_5"], "                  ", rpg_data["boss_line_5"], "\n",
+        "       ", rpg_data["player_line_6"], "                  ", rpg_data["boss_line_6"], "\n",
+        )
 
 def player_attack(rpg_data) -> None:
     """if player choosed "attack", enemy_hp decrease randomly by 10-20 HP
@@ -53,3 +66,4 @@ def ennemys_turn(rpg_data) -> None:
     if rpg_data["player_hp"] < 0:
         rpg_data["player_hp"]= 0
     rpg_data["turn"] += 1
+    
