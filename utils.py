@@ -1,3 +1,4 @@
+from main import rpg_data
 
 def player_is_alive() -> bool:
     """Checks if the player's HP is > 0
