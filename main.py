@@ -1,4 +1,4 @@
-from utils import player_is_alive, enemy_is_alive, afficher_status, player_attack, player_heals, ennemys_turn
+from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn
 
 rpg_data = {
     "player_hp" : 50 ,
