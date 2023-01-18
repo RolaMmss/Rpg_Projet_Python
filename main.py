@@ -46,7 +46,9 @@ while player_is_alive(rpg_data) and enemy_is_alive(rpg_data):          # Check h
         else:
             ennemys_turn(rpg_data)
 
-print('Fin du jeu')
+
+display_status(rpg_data, player_name)
+print('\nFin du jeu')
 if enemy_is_alive(rpg_data):
     print ('GAME OVER')
 else:
