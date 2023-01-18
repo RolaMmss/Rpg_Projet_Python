@@ -30,13 +30,18 @@ def player_attack() -> None:
     
 
 def player_heals() -> None:
-    if rpg_data["potion_number"]>=1:
-        rpg_data["potion_number"]-=1
-        rpg_data["player_hp"]+=(17+randint(8))
-        if rpg_data["player_hp"]>50:
-            rpg_data["player_hp"]=50
+    if rpg_data["potion_number"] >= 1:
+        rpg_data["potion_number"] -= 1
+        rpg_data["player_hp"] += (17+randint(8))
+        if rpg_data["player_hp"] > 50:
+            rpg_data["player_hp"] = 50
     else:
         print("You don't have enough potions !")
 
 def ennemys_turn() -> None:
-    pass
+    """plays enemy's turn
+    player's health should decrease randomly of 5-20 hp
+    """
+    rpg_data["player_hp"] -= (5+randint(15))
+    if rpg_data["player_hp"] < 0:
+        rpg_data["player_hp"]= 0
