@@ -8,6 +8,7 @@ rpg_data = {
     "enemy_hp" : 50 ,
     "potion_number" : 5 ,
     "turn" :  0, 
+    "player_score" : 0,
     "boss1" : "Antoine",
     "boss_line_1" : "       ",
     "boss_line_2" : "       ",
