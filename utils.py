@@ -23,12 +23,16 @@ def enemy_is_alive() -> bool:
 def afficher_status() ->None:
 
 def player_attack() -> None:
+    """if player choosed "attack", enemy_hp decrease randomly by 10-20 HP
+    """
     rpg_data["enemy_hp"] -= (10 + randint(10))
     if rpg_data["enemy_hp"] < 0:
         rpg_data["enemy_hp"] = 0
     
 
 def player_heals() -> None:
+    """if player choosed "potion", player_hp increase randomly by 17-25 HP potion_number decrease by 1
+    """
     if rpg_data["potion_number"] >= 1:
         rpg_data["potion_number"] -= 1
         rpg_data["player_hp"] += (17+randint(8))
@@ -39,7 +43,7 @@ def player_heals() -> None:
 
 def ennemys_turn() -> None:
     """plays enemy's turn
-    player's health should decrease randomly of 5-20 hp
+    player's health should decrease randomly by 5-20 hp
     """
     rpg_data["player_hp"] -= (5+randint(15))
     if rpg_data["player_hp"] < 0:
