@@ -52,7 +52,7 @@ def player_heals(rpg_data) -> None:
     """
     if rpg_data["potion_number"] >= 1:
         rpg_data["potion_number"] -= 1
-        rpg_data["player_hp"] += (17+randint(0,8))
+        rpg_data["player_hp"] += (22+randint(0,8))
         rpg_data["turn"]+=1
         if rpg_data["player_hp"] > 50:
             rpg_data["player_hp"] = 50
