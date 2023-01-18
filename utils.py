@@ -88,7 +88,7 @@ def next_level(rpg_data):
         rpg_data["player_hp"] = 50
         rpg_data["enemy_hp"] = 75
         rpg_data["turn"] = 0
-        rpg_data["boss_name"] = "" 
+        rpg_data["boss_name"] = "Charles" 
         rpg_data["boss_line_1"] = "  <=======]}======" #18 caractères de large
         rpg_data["boss_line_2"] = "    --.   /|      "
         rpg_data["boss_line_3"] = "   _\"/_.'/       "

@@ -8,7 +8,7 @@ rpg_data = {
     "enemy_hp" : 50 ,
     "potion_number" : 5 ,
     "turn" :  0, 
-    "boss1" : "Antoine",
+    "boss_name" : "Antoine",
     "boss_line_1" : " .-.   ",
     "boss_line_2" : "(o o)  ",
     "boss_line_3" : "| O \  ",
