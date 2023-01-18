@@ -27,7 +27,7 @@ def display_status(rpg_data, player_name) ->None:
     Display characters with names, healths, and potions
     """
     print(" ",
-        player_name, "                           [BOSS NAME]", "\n",
+        player_name, "                           ", rpg_data["boss1"], "\n",
         " HP : ", rpg_data["player_hp"], "/ 50                      HP : ", rpg_data["enemy_hp"], "/ 50","\n",
         " ",("◊")*rpg_data["potion_number"], "\n",
         "       ", rpg_data["player_line_1"], "                  ", rpg_data["boss_line_1"], "\n",
