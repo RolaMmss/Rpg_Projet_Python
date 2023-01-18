@@ -10,7 +10,6 @@ def enemy_is_alive() -> bool:
     pass
 
 def afficher_status() ->None:
-    pass
 
 def player_attack() -> None:
     pass
