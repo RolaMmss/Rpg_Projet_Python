@@ -19,7 +19,9 @@ def enemy_is_alive(rpg_data) -> bool:
     """
     if rpg_data["enemy_hp"] > 0:
         return True
-    return False
+    else:
+        rpg_data["player_score"] += (10*rpg_data["turn"]) - rpg_data["turn"]
+        return False
     
 
 def display_status(rpg_data, player_name) ->None:
@@ -27,7 +29,7 @@ def display_status(rpg_data, player_name) ->None:
     Display characters with names, healths, and potions
     """
     print(" ",
-        player_name, "                           ", rpg_data["boss1"], "\n",
+        player_name, "                              ", rpg_data["boss1"], "       ", "SCORE : ", rpg_data["player_score"],"\n"
         " HP : ", rpg_data["player_hp"], "/ 50                      HP : ", rpg_data["enemy_hp"], "/ 50","\n",
         " ",("◊")*rpg_data["potion_number"], "\n",
         "       ", rpg_data["player_line_1"], "                  ", rpg_data["boss_line_1"], "\n",
@@ -47,6 +49,7 @@ def player_attack(rpg_data, player_name) -> None:
     """
     degats = 15 + randint(0,10)
     rpg_data["enemy_hp"] -= degats
+    rpg_data["player_score"] += degats
     if rpg_data["enemy_hp"] < 0:
         rpg_data["enemy_hp"] = 0
     rpg_data["turn"] += 1
@@ -73,6 +76,7 @@ def ennemys_turn(rpg_data,player_name) -> None:
     player's health should decrease randomly by 5-20 hp
     """
     degats = 7+randint(0,8)
+    rpg_data["player_score"] += 1
     rpg_data["player_hp"] -= (degats)
     rpg_data["turn"]+=1
     if rpg_data["player_hp"] < 0:
