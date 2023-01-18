@@ -30,7 +30,6 @@ Remember to grab potions BEFORE you attack !''')
 while player_is_alive(rpg_data) and enemy_is_alive(rpg_data):          # Check hp of both player and enemy
     # Check if enemy is still alive
     # if enemy_is_alive():
-        print(rpg_data)
         # display the status of player : name, hp, number of potions left      
         display_status(rpg_data, player_name)    
         # check which turn
@@ -48,7 +47,9 @@ while player_is_alive(rpg_data) and enemy_is_alive(rpg_data):          # Check h
         else:
             ennemys_turn(rpg_data)
 
-print('Fin du jeu')
+
+display_status(rpg_data, player_name)
+print('\nFin du jeu')
 if enemy_is_alive(rpg_data):
     print ('GAME OVER')
 else:
