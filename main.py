@@ -1,5 +1,6 @@
 
 import random
+from utils import *
 
  # Preparing a game
 player_name = input("Choose a name for your avatar : ")
@@ -17,7 +18,7 @@ rpg_data = {
     "turn" :  0 
 }
 
-while player_is_alive() and enemy_is_alive():          # Check hp of both player and enemy  
+while player_is_alive() and enemy_is_alive():          # Check hp of both player and enemy
     # Check if enemy is still alive
     # if enemy_is_alive():
         
@@ -35,7 +36,7 @@ while player_is_alive() and enemy_is_alive():          # Check hp of both player
             #switch_turn
             rpg_data["turn"] += 1
         
-
+        # Enemy's turn
         else:
             enemy_tun()
             rpg_data["turn"]+=1
