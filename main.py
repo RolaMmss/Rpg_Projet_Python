@@ -1,5 +1,6 @@
 from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn
-
+ # Preparing a game
+player_name = input("Choose a name for your avatar : ")
 rpg_data = {
     "player_hp" : 50 ,
     "enemy_hp" : 50 ,
@@ -14,11 +15,8 @@ rpg_data = {
     "player_line_1" : "     ",
     "player_line_4" : "  o_/",
     "player_line_5" : "  |  ",
-    "player_line_6" : " /\  "
+    "player_line_6" : " /\  ",
 }
-
- # Preparing a game
-player_name = input("Choose a name for your avatar : ")
 print("Welcome "+ player_name +". You will face off against the computer!")
 print()
 print('''In this battle you and the computer will take turns battling, the first to fall loses!
@@ -33,7 +31,7 @@ while player_is_alive(rpg_data) and enemy_is_alive(rpg_data):          # Check h
     # if enemy_is_alive():
         print(rpg_data)
         # display the status of player : name, hp, number of potions left      
-        display_status(rpg_data)    
+        display_status(rpg_data, player_name)    
         # check which turn
         if rpg_data["turn"]%2 == 0 :   # turn is pair
         # Demand an action from player: Either to attack or to take a potion
