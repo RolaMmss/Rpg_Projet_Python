@@ -40,6 +40,7 @@ def player_heals(rpg_data) -> None:
     if rpg_data["potion_number"] >= 1:
         rpg_data["potion_number"] -= 1
         rpg_data["player_hp"] += (17+randint(0,8))
+        rpg_data["turn"]+=1
         if rpg_data["player_hp"] > 50:
             rpg_data["player_hp"] = 50
     else:
@@ -49,7 +50,8 @@ def ennemys_turn(rpg_data) -> None:
     """plays enemy's turn
     player's health should decrease randomly by 5-20 hp
     """
-    rpg_data["player_hp"] -= (5+randint(0,15))
+    rpg_data["player_hp"] -= (10+randint(0,15))
+    rpg_data["turn"]+=1
     if rpg_data["player_hp"] < 0:
         rpg_data["player_hp"]= 0
-    rpg_data["turn"] += 1
+        

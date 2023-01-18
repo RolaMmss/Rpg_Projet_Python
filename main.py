@@ -21,25 +21,23 @@ Remember to grab potions BEFORE you attack !''')
 while player_is_alive(rpg_data) and enemy_is_alive(rpg_data):          # Check hp of both player and enemy
     # Check if enemy is still alive
     # if enemy_is_alive():
-        
+        print(rpg_data)
         # display the status of player : name, hp, number of potions left      
         afficher_status(rpg_data)    
         # check which turn
         if rpg_data["turn"]%2 == 0 :   # turn is pair
-        
         # Demand an action from player: Either to attack or to take a potion
             action = input("What do you want to do ? (attack/potion) \n")
-            if action == "attack":
+            if action.lower() == "attack":
                 player_attack(rpg_data)
-            elif action == "potion":
+            elif action.lower() == "potion":
                 player_heals(rpg_data)
-            #switch_turn
-            rpg_data["turn"] += 1
+            else:
+                print('Veuillez entrer une action valide')
         
         # Enemy's turn
         else:
             ennemys_turn(rpg_data)
-            rpg_data["turn"]+=1
 
 print('Fin du jeu')
 if enemy_is_alive(rpg_data):
