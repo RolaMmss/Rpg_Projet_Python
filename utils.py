@@ -17,5 +17,5 @@ def player_attack() -> None:
 def player_heals() -> None:
     pass
 
-def ennemi_attacks() -> None:
+def ennemys_turn() -> None:
     pass
