@@ -1,6 +1,8 @@
 
 import random
-player_name = input("Hello, what is your name? ")
+
+ # Preparing a game
+player_name = input("Choose a name for your avatar : ")
 print("Welcome "+ player_name +". You will face off against the computer!")
 print()
 print('''In this battle you and the computer will take turns battling, the first to fall loses!
@@ -15,20 +17,25 @@ rpg_data = {
     "turn" :  0 
 }
 
- # Preparing a game
-player_name = input("Choose a name for your avatar : ")
+while player_is_alive() and enemy_is_alive():          # Check hp of both player and enemy  
+    # Check if enemy is still alive
+    # if enemy_is_alive():
+        
+        # display the status of player : name, hp, number of potions left      
+        afficher_status()    
+        # check which turn
+        if rpg_data["turn"]%2 == 0 :   # turn is pair
+        
+        # Demand an action from player: Either to attack or to take a potion
+            action = input("Attack or potion")
+            if action == "attack":
+                player_attack()
+            elif action == "potion":
+                player_heals()
+            #switch_turn
+            rpg_data["turn"] += 1
+        
 
-
-
-
-while not player_is_dead:
-   
-    display_player_name_and_initial_score((name, score) :dict)
-    # Start a game
-    # Demand an action from player: Either to attack or to take a portion
-    choice_attack_or portion()
-        if choice == attack:
-            pass
-        elif choice == portion:
-            pass
-    switch_turn()
+        else:
+            enemy_tun()
+            rpg_data["turn"]+=1
