@@ -6,6 +6,7 @@ rpg_data = {
     "enemy_hp" : 50 ,
     "potion_number" : 3 ,
     "turn" :  0, 
+    "boss1" : "Antoine",
     "boss_line_1" : " .-.   ",
     "boss_line_2" : "(o o)  ",
     "boss_line_3" : "| O \  ",
@@ -13,7 +14,7 @@ rpg_data = {
     "boss_line_5" : "  `~~~'",
     "boss_line_6" : "       ",
     "player_line_1" : "     ",
-    "player_line_4" : "  o_/",
+    "player_line_4" : "  ô_/",
     "player_line_5" : "  |  ",
     "player_line_6" : " /\  ",
 }
