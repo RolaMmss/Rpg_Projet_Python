@@ -1,13 +1,20 @@
 
 def player_is_alive() -> bool:
-    """Checks if the player's health is > 0
+    """Checks if the player's HP is > 0
 
     Returns:
         bool: True if player's HP >0, else return False
     """
-    pass
+    if rpg_data["player_hp"] > 0:
+        return True
+    return False
 
 def enemy_is_alive() -> bool:
+    """checks if the enemy's HP is > 0
+
+    Returns:
+        bool: True if enemy's HP >0 else return False
+    """
     if rpg_data["enemy_hp"] > 0:
         return True
     return False
