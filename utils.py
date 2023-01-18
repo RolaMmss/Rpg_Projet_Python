@@ -22,7 +22,7 @@ def enemy_is_alive(rpg_data) -> bool:
     return False
     
 
-def display_status(rpg_data) ->None:
+def display_status(rpg_data, player_name) ->None:
     """_summary_
     Display characters with names, healths, and potions
     """
