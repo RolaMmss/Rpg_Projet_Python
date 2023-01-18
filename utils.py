@@ -1,12 +1,7 @@
-rpg_data = {
-    "player_hp" : 50 ,
-    "enemy_hp" : 50 ,
-    "potion_number" : 3 ,
-    "turn" :  0 
-}
+
 from random import randint
 
-def player_is_alive() -> bool:
+def player_is_alive(rpg_data) -> bool:
     """Checks if the player's HP is > 0
 
     Returns:
@@ -16,7 +11,7 @@ def player_is_alive() -> bool:
         return True
     return False
 
-def enemy_is_alive() -> bool:
+def enemy_is_alive(rpg_data) -> bool:
     """checks if the enemy's HP is > 0
 
     Returns:
@@ -27,10 +22,10 @@ def enemy_is_alive() -> bool:
     return False
     
 
-def afficher_status() ->None:
+def afficher_status(rpg_data) ->None:
     pass
 
-def player_attack() -> None:
+def player_attack(rpg_data) -> None:
     """if player choosed "attack", enemy_hp decrease randomly by 10-20 HP
     """
     rpg_data["enemy_hp"] -= (10 + randint(0,10))
@@ -39,7 +34,7 @@ def player_attack() -> None:
     rpg_data["turn"] += 1
     
 
-def player_heals() -> None:
+def player_heals(rpg_data) -> None:
     """if player choosed "potion", player_hp increase randomly by 17-25 HP potion_number decrease by 1
     """
     if rpg_data["potion_number"] >= 1:
@@ -50,7 +45,7 @@ def player_heals() -> None:
     else:
         print("You don't have enough potions !")
 
-def ennemys_turn() -> None:
+def ennemys_turn(rpg_data) -> None:
     """plays enemy's turn
     player's health should decrease randomly by 5-20 hp
     """

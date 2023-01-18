@@ -1,4 +1,11 @@
-from utils import * # player_is_alive, enemy_is_alive, afficher_status, player_attack, player_heals, ennemys_turn
+from utils import player_is_alive, enemy_is_alive, afficher_status, player_attack, player_heals, ennemys_turn
+
+rpg_data = {
+    "player_hp" : 50 ,
+    "enemy_hp" : 50 ,
+    "potion_number" : 3 ,
+    "turn" :  0 
+}
 
  # Preparing a game
 player_name = input("Choose a name for your avatar : ")
@@ -11,25 +18,31 @@ Remember to grab potions BEFORE you attack !''')
 # Player setup #
 
 
-while player_is_alive() and enemy_is_alive():          # Check hp of both player and enemy
+while player_is_alive(rpg_data) and enemy_is_alive(rpg_data):          # Check hp of both player and enemy
     # Check if enemy is still alive
     # if enemy_is_alive():
         
         # display the status of player : name, hp, number of potions left      
-        afficher_status()    
+        afficher_status(rpg_data)    
         # check which turn
         if rpg_data["turn"]%2 == 0 :   # turn is pair
         
         # Demand an action from player: Either to attack or to take a potion
             action = input("What do you want to do ? (attack/potion) \n")
             if action == "attack":
-                player_attack()
+                player_attack(rpg_data)
             elif action == "potion":
-                player_heals()
+                player_heals(rpg_data)
             #switch_turn
             rpg_data["turn"] += 1
         
         # Enemy's turn
         else:
-            ennemys_turn()
+            ennemys_turn(rpg_data)
             rpg_data["turn"]+=1
+
+print('Fin du jeu')
+if enemy_is_alive(rpg_data):
+    print ('GAME OVER')
+else:
+    print('Felicitations ')
