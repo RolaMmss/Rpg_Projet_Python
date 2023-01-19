@@ -1,5 +1,6 @@
 
 from random import randint
+import csv
 
 def player_is_alive(rpg_data) -> bool:
     """Checks in rpg_data if player_hp is > 0
@@ -177,7 +178,7 @@ def all_enemies_dead(rpg_data) -> bool:
         bool: returns True if you defeated the last level, else return False
     """
     max_level = 3
-    if rpg_data["level"] == max_level and not enemy_is_alive(rpg_data): #Test si on est au niveau Max (en l'occurence 2)
+    if rpg_data["level"] == max_level and not enemy_is_alive(rpg_data):     #Test si on est au niveau Max (en l'occurence 2)
         return True
     return False
 
@@ -248,5 +249,12 @@ def display_victory(rpg_data) -> None:
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
 
-def display_final(rpg_data, player_name):
-    pass
+def display_board(rpg_data, player_name):
+    with open('board.csv', 'w', encoding='UTF8') as f:
+        writer = csv.writer(f)
+        # write the header
+        player = writer.writerow(player_name)
+
+        # write the data
+        final_score = writer.writerow({rpg_data['player_score']})
+    return player, final_score
