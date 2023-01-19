@@ -1,4 +1,4 @@
-from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead
+from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory
  # Preparing a game
 player_name = input("Choose a name for your avatar : ")
 phrase = ('')
@@ -29,7 +29,7 @@ rpg_data = {
     "player_line_6" : "  <}.==\"./I\\",
     "player_line_7" : "   '-\T/-\I/",
     "player_line_8" : "     /_\    ",
-    "player_line_9" : "   _// \\   ",
+    "player_line_9" : "   _// \\\   ",
     "player_line_10" : "   \    I_  "
 }
 print("Welcome "+ player_name +". You will face off against the computer!")
@@ -58,18 +58,20 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
             elif action.lower() == "potion":
                 phrase = player_heals(rpg_data,player_name)
             else:
-                print('Veuillez entrer une action valide')
+                print('Please enter a valid action ')
         
         # Enemy's turn
         else:
             phrase = ennemys_turn(rpg_data, player_name)
     
     else:
+        display_victory(rpg_data)
+        input()
         phrase = next_level(rpg_data)
 
 display_status(rpg_data, player_name)
-print('\nFin du jeu')
+print('\n End of game !')
 if enemy_is_alive(rpg_data):
-    print ('GAME OVER')
+    print ('----GAME OVER----')
 else:
-    print('Felicitations ')
+    print('----Congrats---- ')
