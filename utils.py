@@ -1,4 +1,4 @@
-
+import csv
 from random import randint
 
 def player_is_alive(rpg_data) -> bool:
@@ -10,9 +10,7 @@ def player_is_alive(rpg_data) -> bool:
     Returns:
         bool: True if player's HP >0, else return False
     """
-    if rpg_data["player_hp"] > 0:
-        return True# Player setup #
-    return False
+    return rpg_data["player_hp"] > 0
 
 def enemy_is_alive(rpg_data) -> bool:
     """checks in rpg_data if enemy_hp > 0
@@ -198,5 +196,57 @@ def display_victory(rpg_data) -> None:
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
 
-def display_final(rpg_data, player_name):
-    pass
+
+def save_score(rpg_data, player_name):
+    print(f'Your score is {rpg_data["player_score"]}')
+    if input('Do you want to save your score ? (Y/N) ') == 'Y' :
+        
+        with open ('score.csv', 'a') as file:
+            writing = csv.writer(file)
+            writing.writerow([rpg_data['player_score'], player_name])
+
+
+
+
+
+def display_final():
+    if player_is_alive:
+        pass #affichage en cas de victoire
+
+    else:
+        pass #affichage en cas de defaite
+    
+    with open ('score.csv', 'r') as file:
+        reader=csv.reader(file)
+        scores = list(reader)
+        sorted_scores = sorted(scores, key = lambda x : x[0], reverse = True)
+    
+    trophy_l1 = f'  _______  '
+    trophy_l2 = f' |  N°1  | '
+    trophy_l3 = f'(|{" "*(3-len(sorted_scores[0][1])//2)}{sorted_scores[0][1][:7]}{" "*(int(4-len(sorted_scores[0][1])/2))}|)'
+    trophy_l4 = f' |  {sorted_scores[0][0][:5]}  | '
+    trophy_l5 = f'  \     /  '
+    trophy_l6 = f"   `---'   "
+    trophy_l7 = f'   _|_|_   '
+
+    print(
+        '\n    Thanks for playing !\n',
+        '  //    HIGHSCORES    \\\ ')
+    for i in range(7):
+        print(str(eval(f'trophy_l{i+1}')+'     '),end='')
+        if i!=0:
+            try:
+                print(f'{i+1}. {" ".join(sorted_scores[i])}')
+            except:
+                print('')
+        else:
+            print('')
+    
+
+
+
+
+
+
+
+

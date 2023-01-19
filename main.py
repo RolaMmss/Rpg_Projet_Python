@@ -1,4 +1,4 @@
-from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory
+from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory, save_score, display_final
  # Preparing a game
 player_name = input("Choose a name for your avatar : ")
 phrase = ('')
@@ -69,9 +69,9 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         input()
         phrase = next_level(rpg_data)
 
-display_status(rpg_data, player_name)
-print('\n End of game !')
 if enemy_is_alive(rpg_data):
     print ('----GAME OVER----')
 else:
     print('----Congrats---- ')
+save_score(rpg_data,player_name)
+display_final()
