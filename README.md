@@ -3,7 +3,7 @@ Brief 1 -  SAS Tech IA
 
 About this game:
 
-In this game, you and the computer (enemies) will take turns battling, the first to fall loses! Each starts with a 50 health points (HP). There are potions laying around for you to grab! The enemy has no potions. These potions help you to recover randomly by 30-40 HP. You may use up to five potions! Remember to grab potions BEFORE you attack ! The game consists of two levels with different enemies to beat.
+In this game, you and the computer (enemies) will take turns battling, the first to fall loses! Each starts with a 50 health points (HP). There are potions laying around for you to grab! The enemy has no potions. These potions help you to recover randomly by 30-40 HP. You may use up to five potions! Remember to grab potions BEFORE you attack ! The game consists of three levels with different enemies to beat.
 
 The game runs via main.py.
 
