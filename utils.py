@@ -1,11 +1,8 @@
 import csv
 from random import randint
-<<<<<<< HEAD
-=======
 import csv
 from playsound import playsound
 
->>>>>>> 07d4b473f72a01bc626c74488390717d731381c0
 
 def player_is_alive(rpg_data) -> bool:
     """Checks in rpg_data if player_hp is > 0
@@ -41,6 +38,8 @@ def display_status(rpg_data, player_name) -> None:
         rpg_data (dict): dict that contains all the data neeed for the game to run adn evolve
         player_name ([type]): var that's not changing during the game, coming from an input at the beginning of the main.py file
     """
+    # playsound('media/goodresult-82807.mp3')       
+
     print(" "*24, "SCORE : ", "%04d" % rpg_data["player_score"], "\n",
         "   [", player_name.upper(), " "*(16 - len(player_name)), "]", " "*(11),
         "[", rpg_data["boss_name"].upper(), " "*(16 - len(rpg_data["boss_name"])), "]", "\n",
@@ -197,7 +196,7 @@ def next_level(rpg_data):
     Returns:
         str: returns the sentence that must be displayed une display_status via the phrase var
     """
-    
+    # playsound('media/goodresult-82807.mp3')
     rpg_data["level"] += 1
     
     if rpg_data["level"] == 2:          #LEVEL 2
@@ -243,8 +242,6 @@ def display_victory(rpg_data) -> None:
     Args:
         rpg_data (dict): dict containing all data from the game
     """
-    playsound('media/goodresult-82807.mp3')
-
     print(
     "\n\n       ", rpg_data["player_line_1"],
     "\n       ", rpg_data["player_line_2"],
@@ -256,6 +253,8 @@ def display_victory(rpg_data) -> None:
     "\n       ", rpg_data["player_line_8"],
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
+    # playsound('media/goodresult-82807.mp3')
+
 
 
 def save_score(rpg_data, player_name):
@@ -271,7 +270,7 @@ def save_score(rpg_data, player_name):
 
 
 def display_final():
-    if player_is_alive():
+    if player_is_alive(rpg_data):
         pass #affichage en cas de victoire
 
     else:
@@ -302,7 +301,7 @@ def display_final():
                 print('')
         else:
             print('')
-    
+    playsound('media/medieval-fanfare.mp3')
 
 
 
