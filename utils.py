@@ -37,7 +37,7 @@ def display_status(rpg_data, player_name) -> None:
         rpg_data (dict): dict that contains all the data neeed for the game to run adn evolve
         player_name ([type]): var that's not changing during the game, coming from an input at the beginning of the main.py file
     """
-    print(" "*25, "SCORE : ", rpg_data["player_score"], "\n",
+    print(" "*24, "SCORE : ", "%04d" % rpg_data["player_score"], "\n",
         "   [", player_name.upper(), " "*(16 - len(player_name)), "]", " "*(11),
         "[", rpg_data["boss_name"].upper(), " "*(16 - len(rpg_data["boss_name"])), "]", "\n",
         "   [ HP :", rpg_data["player_hp"], "/ 50", " "*(6 - len(str(rpg_data["player_hp"]))), "]", " "*11,
