@@ -86,6 +86,8 @@ def player_heals(rpg_data, player_name) -> str:
     Returns:
         str: returns the sentence that must be displayed une display_status via the phrase var
     """
+    playsound('media/quick-pour-86306.mp3')
+
     soins = 30+randint(0,10)
     if rpg_data["potion_number"] >= 1:
         rpg_data["potion_number"] -= 1
@@ -238,6 +240,8 @@ def display_victory(rpg_data) -> None:
     Args:
         rpg_data (dict): dict containing all data from the game
     """
+    playsound('media/goodresult-82807.mp3')
+
     print(
     "\n\n       ", rpg_data["player_line_1"],
     "\n       ", rpg_data["player_line_2"],
