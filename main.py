@@ -35,7 +35,7 @@ rpg_data = {
 print("Welcome "+ player_name +". You will face off against the computer!")
 print()
 print('''In this battle you and the computer will take turns battling, the first to fall loses!
-There are potions laying around for you to grab! You may use up to three potions!
+There are potions laying around for you to grab! You may use up to five potions!
 Remember to grab potions BEFORE you attack !''')
 
 # Player setup #
@@ -69,9 +69,6 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         input()
         phrase = next_level(rpg_data)
 
-if enemy_is_alive(rpg_data):
-    print ('----GAME OVER----')
-else:
-    print('----Congrats---- ')
+
 save_score(rpg_data,player_name)
 display_final()
