@@ -32,13 +32,11 @@ rpg_data = {
     "player_line_9" : "   _// \\\   ",
     "player_line_10" : "   \    I_  "
 }
-print("Welcome "+ player_name +". You will face off against the computer!")
-print()
-print('''In this battle you and the computer will take turns battling, the first to fall loses!
-There are potions laying around for you to grab! You may use up to five potions!
-Remember to grab potions BEFORE you attack !''')
 
-# Player setup #
+print("Welcome "+ player_name +"in Escape from Simplon")
+print()
+print('''You're going to face MONSTERS coming to teach you IA things !
+Be careful, it could be really hurtful sometimes, Good luck !''')
 
 
 while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # Check hp of both player and enemy
