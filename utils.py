@@ -1,6 +1,9 @@
 import csv
 from random import randint
+<<<<<<< HEAD
 import csv
+=======
+>>>>>>> 6bc74f36f9ec6e41cc705fde5bb437dd4be31681
 from playsound import playsound
 
 
