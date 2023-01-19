@@ -1,9 +1,6 @@
 import csv
 from random import randint
-<<<<<<< HEAD
 import csv
-=======
->>>>>>> 6bc74f36f9ec6e41cc705fde5bb437dd4be31681
 from playsound import playsound
 
 
@@ -41,8 +38,6 @@ def display_status(rpg_data, player_name) -> None:
         rpg_data (dict): dict that contains all the data neeed for the game to run adn evolve
         player_name ([type]): var that's not changing during the game, coming from an input at the beginning of the main.py file
     """
-    # playsound('media/goodresult-82807.mp3')       
-
     print(" "*24, "SCORE : ", "%04d" % rpg_data["player_score"], "\n",
         "   [", player_name.upper(), " "*(16 - len(player_name)), "]", " "*(11),
         "[", rpg_data["boss_name"].upper(), " "*(16 - len(rpg_data["boss_name"])), "]", "\n",
@@ -117,6 +112,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
     """
     
     if rpg_data["level"] == 1:
+        playsound('media/ghost.mp3')
         degats = 7+randint(0,8)
         rpg_data["player_hp"] -= (degats)
         rpg_data["turn"]+=1
@@ -125,6 +121,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
         return f'{rpg_data["boss_name"]} hit {player_name} ! Ouch ! -{degats} HP'
 
     elif rpg_data["level"] == 2:
+        playsound('media/centaur.mp3')
         choix = randint(0,3)
         if choix == 2:
             degats = 7 + randint(0,3)
@@ -145,6 +142,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
             return f'{rpg_data["boss_name"]} hit {player_name} with his spear ! -{degats} HP'
         
     elif rpg_data["level"] == 3:
+        playsound('media/dragonfire.mp3')
         choix = randint(0,5)
         if choix == 2 or choix ==3:
             degats = 17 + randint(0,3)
@@ -199,7 +197,7 @@ def next_level(rpg_data):
     Returns:
         str: returns the sentence that must be displayed une display_status via the phrase var
     """
-    # playsound('media/goodresult-82807.mp3')
+    playsound('media/goodresult-82807.mp3')
     rpg_data["level"] += 1
     
     if rpg_data["level"] == 2:          #LEVEL 2
@@ -262,7 +260,7 @@ def display_victory(rpg_data) -> None:
 
 def save_score(rpg_data, player_name):
     print(f'Your score is {rpg_data["player_score"]}')
-    if input('Do you want to save your score ? (Y/N) ') == 'Y' :
+    if input('Do you want to save your score ? (Y/N) ').upper() == 'Y' :
         
         with open ('score.csv', 'a') as file:
             writing = csv.writer(file)
@@ -272,39 +270,39 @@ def save_score(rpg_data, player_name):
 
 
 
-def display_final():
-    if player_is_alive(rpg_data):
-        pass #affichage en cas de victoire
+# def display_final():
+#     if player_is_alive():
+#         pass #affichage en cas de victoire
 
-    else:
-        pass #affichage en cas de defaite
+#     else:
+#         pass #affichage en cas de defaite
     
-    with open ('score.csv', 'r') as file:
-        reader=csv.reader(file)
-        scores = list(reader)
-        sorted_scores = sorted(scores, key = lambda x : x[0], reverse = True)
+#     with open ('score.csv', 'r') as file:
+#         reader=csv.reader(file)
+#         scores = list(reader)
+#         sorted_scores = sorted(scores, key = lambda x : x[0], reverse = True)
     
-    trophy_l1 = f'  _______  '
-    trophy_l2 = f' |  N°1  | '
-    trophy_l3 = f'(|{" "*(3-len(sorted_scores[0][1])//2)}{sorted_scores[0][1][:7]}{" "*(int(4-len(sorted_scores[0][1])/2))}|)'
-    trophy_l4 = f' |  {sorted_scores[0][0][:5]}  | '
-    trophy_l5 = f'  \     /  '
-    trophy_l6 = f"   `---'   "
-    trophy_l7 = f'   _|_|_   '
+#     trophy_l1 = f'  _______  '
+#     trophy_l2 = f' |  N°1  | '
+#     trophy_l3 = f'(|{" "*(3-len(sorted_scores[0][1])//2)}{sorted_scores[0][1][:7]}{" "*(int(4-len(sorted_scores[0][1])/2))}|)'
+#     trophy_l4 = f' |  {sorted_scores[0][0][:5]}  | '
+#     trophy_l5 = f'  \     /  '
+#     trophy_l6 = f"   `---'   "
+#     trophy_l7 = f'   _|_|_   '
 
-    print(
-        '\n    Thanks for playing !\n',
-        '  //    HIGHSCORES    \\\ ')
-    for i in range(7):
-        print(str(eval(f'trophy_l{i+1}')+'     '),end='')
-        if i!=0:
-            try:
-                print(f'{i+1}. {" ".join(sorted_scores[i])}')
-            except:
-                print('')
-        else:
-            print('')
-    playsound('media/medieval-fanfare.mp3')
+#     print(
+#         '\n    Thanks for playing !\n',
+#         '  //    HIGHSCORES    \\\ ')
+#     for i in range(7):
+#         print(str(eval(f'trophy_l{i+1}')+'     '),end='')
+#         if i!=0:
+#             try:
+#                 print(f'{i+1}. {" ".join(sorted_scores[i])}')
+#             except:
+#                 print('')
+#         else:
+#             print('')
+#     playsound('media/medieval-fanfare.mp3')
 
 
 
