@@ -1,5 +1,11 @@
 import csv
 from random import randint
+<<<<<<< HEAD
+=======
+import csv
+from playsound import playsound
+
+>>>>>>> 07d4b473f72a01bc626c74488390717d731381c0
 
 def player_is_alive(rpg_data) -> bool:
     """Checks in rpg_data if player_hp is > 0
@@ -63,6 +69,7 @@ def player_attack(rpg_data, player_name) -> str:
     Returns:
         str: sentence that must be displayed under the display_status via the phrase var
     """
+    playsound('media/NRFQVRF-kick-041.mp3')
     degats = 15 + randint(0,10)
     rpg_data["enemy_hp"] -= degats
     rpg_data["player_score"] += degats

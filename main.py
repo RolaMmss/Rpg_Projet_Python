@@ -47,7 +47,7 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         if phrase !=None and phrase != '' :
             print(phrase)
             input()
-        # check which turn
+        # check which turnpip install pygobject
         if rpg_data["turn"]%2 == 0 :   # turn is pair
         # Demand an action from player: Either to attack or to take a potion
             action = input("What do you want to do ? (attack/potion) \n")
