@@ -198,4 +198,5 @@ def display_victory(rpg_data) -> None:
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
 
-
+def display_final(rpg_data, player_name):
+    pass
