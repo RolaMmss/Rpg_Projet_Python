@@ -1,4 +1,4 @@
-from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory
+from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory, save_score, display_final
  # Preparing a game
 player_name = input("Choose a name for your avatar : ")
 phrase = ('')
@@ -35,7 +35,7 @@ rpg_data = {
 print("Welcome "+ player_name +". You will face off against the computer!")
 print()
 print('''In this battle you and the computer will take turns battling, the first to fall loses!
-There are potions laying around for you to grab! You may use up to three potions!
+There are potions laying around for you to grab! You may use up to five potions!
 Remember to grab potions BEFORE you attack !''')
 
 # Player setup #
@@ -69,9 +69,7 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         input()
         phrase = next_level(rpg_data)
 
-display_status(rpg_data, player_name)
-print('\n End of game !')
-if enemy_is_alive(rpg_data):
-    print ('----GAME OVER----')
-else:
-    print('----Congrats---- ')
+
+save_score(rpg_data,player_name)
+display_final()
+ 

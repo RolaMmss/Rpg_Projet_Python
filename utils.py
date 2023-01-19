@@ -1,5 +1,6 @@
-
+import csv
 from random import randint
+import csv
 
 def player_is_alive(rpg_data) -> bool:
     """Checks in rpg_data if player_hp is > 0
@@ -10,9 +11,7 @@ def player_is_alive(rpg_data) -> bool:
     Returns:
         bool: True if player's HP >0, else return False
     """
-    if rpg_data["player_hp"] > 0:
-        return True# Player setup #
-    return False
+    return rpg_data["player_hp"] > 0
 
 def enemy_is_alive(rpg_data) -> bool:
     """checks in rpg_data if enemy_hp > 0
@@ -37,11 +36,12 @@ def display_status(rpg_data, player_name) -> None:
         rpg_data (dict): dict that contains all the data neeed for the game to run adn evolve
         player_name ([type]): var that's not changing during the game, coming from an input at the beginning of the main.py file
     """
-    print(" "*24, "SCORE : ", rpg_data["player_score"], "\n",
-        "   [", player_name.upper(), " "*(15 - len(player_name)), "]", " "*(11),
-        "[", rpg_data["boss_name"].upper(), " "*(15 - len(rpg_data["boss_name"])), "]", "\n",
-        "   [ HP :", rpg_data["player_hp"], "/ 50     ]", " "*11, "[ HP : ", rpg_data["enemy_hp"], "/ ",rpg_data["enemy_max_hp"],"  ]\n",
-        "   [ Potions :",("◊")*rpg_data["potion_number"], " "*(5 - rpg_data["potion_number"]), "]", " "*11 , "[", " "*16, "]\n",
+    print(" "*24, "SCORE : ", "%04d" % rpg_data["player_score"], "\n",
+        "   [", player_name.upper(), " "*(16 - len(player_name)), "]", " "*(11),
+        "[", rpg_data["boss_name"].upper(), " "*(16 - len(rpg_data["boss_name"])), "]", "\n",
+        "   [ HP :", rpg_data["player_hp"], "/ 50", " "*(6 - len(str(rpg_data["player_hp"]))), "]", " "*11,
+        "[ HP : ", rpg_data["enemy_hp"], "/ ",rpg_data["enemy_max_hp"], " "*(6 - len(str(rpg_data["enemy_hp"])) - len(str(rpg_data["enemy_max_hp"]))),"]\n",
+        "   [ Potions :",("◊")*rpg_data["potion_number"], " "*(6 - rpg_data["potion_number"]), "]", " "*11 , "[", " "*17, "]\n",
         "       ", rpg_data["player_line_1"], "                  ", rpg_data["boss_line_1"], "\n",
         "       ", rpg_data["player_line_2"], "                  ", rpg_data["boss_line_2"], "\n",
         "       ", rpg_data["player_line_3"], "                  ", rpg_data["boss_line_3"], "\n",
@@ -133,6 +133,37 @@ def ennemys_turn(rpg_data,player_name) -> str:
             if rpg_data["player_hp"] < 0:
                 rpg_data["player_hp"]= 0
             return f'{rpg_data["boss_name"]} hit {player_name} with his spear ! -{degats} HP'
+        
+    elif rpg_data["level"] == 3:
+        choix = randint(0,5)
+        if choix == 2 or choix ==3:
+            degats = 17 + randint(0,3)
+            rpg_data["player_hp"] -= degats
+            rpg_data["turn"] += 1
+            if rpg_data["player_hp"] < 0:
+                rpg_data["player_hp"]= 0
+            if rpg_data["enemy_hp"] > 100:
+                rpg_data["enemy"]= 100
+            return f'{rpg_data["boss_name"]} throws fire to {player_name} ! -{degats} HP '
+        
+        elif choix == 4:
+            degats = 0
+            rpg_data["player_hp"] -= degats
+            rpg_data["turn"] += 1
+            if rpg_data["player_hp"] < 0:
+                rpg_data["player_hp"]= 0
+            if rpg_data["enemy_hp"] > 100:
+                rpg_data["enemy"]= 100
+            return f'{rpg_data["boss_name"]} missed !'
+        
+        else:
+            degats = 12+randint(0,8)
+            rpg_data["player_hp"] -= degats
+            rpg_data["turn"]+=1
+            if rpg_data["player_hp"] < 0:
+                rpg_data["player_hp"]= 0
+            return f'{rpg_data["boss_name"]} hit {player_name} with his claws ! -{degats} HP'
+
 
     
 def all_enemies_dead(rpg_data) -> bool:
@@ -144,8 +175,8 @@ def all_enemies_dead(rpg_data) -> bool:
     Returns:
         bool: returns True if you defeated the last level, else return False
     """
-    max_level = 2
-    if rpg_data["level"] == max_level and not enemy_is_alive(rpg_data): #Test si on est au niveau Max (en l'occurence 2)
+    max_level = 3
+    if rpg_data["level"] == max_level and not enemy_is_alive(rpg_data):     #Test si on est au niveau Max (en l'occurence 2)
         return True
     return False
 
@@ -178,6 +209,24 @@ def next_level(rpg_data):
         rpg_data["boss_line_9"] = "    \\\ , ||    \|  "
         rpg_data["boss_line_10"] ="     \/ ||    ||  "
         return 'Level 2 - CENTAUR INCOMING !!!'
+    
+    elif rpg_data["level"] == 3:          #LEVEL 3
+        rpg_data["player_hp"] = 50
+        rpg_data["enemy_hp"] = 100
+        rpg_data["enemy_max_hp"] = 100
+        rpg_data["turn"] = 0
+        rpg_data["boss_name"] = "Safia" 
+        rpg_data["boss_line_1"] = "              \.        `.         `.   " #39 caractères de large
+        rpg_data["boss_line_2"] = "      (,,(,    \.         `.   ____,-`.,"
+        rpg_data["boss_line_3"] = "   (,'     `/   \.   ,--.___`.'         "
+        rpg_data["boss_line_4"] = ",  ,'  ,--.  `,   \.;'         `        "
+        rpg_data["boss_line_5"] = " `{D, {    \  :    \;                   "
+        rpg_data["boss_line_6"] = "   V,,'    /  /    //                   "
+        rpg_data["boss_line_7"] = "   j;;    /  ,' ,-//.    ,---.      ,   "
+        rpg_data["boss_line_8"] = "   \;'   /  ,' /  _  \  /  _  \   ,'/   "
+        rpg_data["boss_line_9"] = "         \   `'  / \  `'  / \  `.' /    "
+        rpg_data["boss_line_10"] ="          `.___,'   `.__,'   `.__,'     "
+        return 'DRAGON INCOMING !!!'
 
 
 def display_victory(rpg_data) -> None:
@@ -198,5 +247,57 @@ def display_victory(rpg_data) -> None:
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
 
-def display_final(rpg_data, player_name):
-    pass
+
+def save_score(rpg_data, player_name):
+    print(f'Your score is {rpg_data["player_score"]}')
+    if input('Do you want to save your score ? (Y/N) ') == 'Y' :
+        
+        with open ('score.csv', 'a') as file:
+            writing = csv.writer(file)
+            writing.writerow([rpg_data['player_score'], player_name])
+
+
+
+
+
+def display_final():
+    if player_is_alive:
+        pass #affichage en cas de victoire
+
+    else:
+        pass #affichage en cas de defaite
+    
+    with open ('score.csv', 'r') as file:
+        reader=csv.reader(file)
+        scores = list(reader)
+        sorted_scores = sorted(scores, key = lambda x : x[0], reverse = True)
+    
+    trophy_l1 = f'  _______  '
+    trophy_l2 = f' |  N°1  | '
+    trophy_l3 = f'(|{" "*(3-len(sorted_scores[0][1])//2)}{sorted_scores[0][1][:7]}{" "*(int(4-len(sorted_scores[0][1])/2))}|)'
+    trophy_l4 = f' |  {sorted_scores[0][0][:5]}  | '
+    trophy_l5 = f'  \     /  '
+    trophy_l6 = f"   `---'   "
+    trophy_l7 = f'   _|_|_   '
+
+    print(
+        '\n    Thanks for playing !\n',
+        '  //    HIGHSCORES    \\\ ')
+    for i in range(7):
+        print(str(eval(f'trophy_l{i+1}')+'     '),end='')
+        if i!=0:
+            try:
+                print(f'{i+1}. {" ".join(sorted_scores[i])}')
+            except:
+                print('')
+        else:
+            print('')
+    
+
+
+
+
+
+
+
+
