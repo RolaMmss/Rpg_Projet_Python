@@ -11,7 +11,7 @@ def player_is_alive(rpg_data) -> bool:
         bool: True if player's HP >0, else return False
     """
     if rpg_data["player_hp"] > 0:
-        return True
+        return True# Player setup #
     return False
 
 def enemy_is_alive(rpg_data) -> bool:
@@ -37,10 +37,11 @@ def display_status(rpg_data, player_name) -> None:
         rpg_data (dict): dict that contains all the data neeed for the game to run adn evolve
         player_name ([type]): var that's not changing during the game, coming from an input at the beginning of the main.py file
     """
-    print(" ",
-        player_name, "                           ", rpg_data["boss_name"], "       ", "SCORE : ", rpg_data["player_score"], "\n",
-        " HP : ", rpg_data["player_hp"], "/ 50                      HP : ", rpg_data["enemy_hp"], "/ ",rpg_data["enemy_max_hp"],"\n",
-        " ",("◊")*rpg_data["potion_number"], "\n",
+    print(" "*24, "SCORE : ", rpg_data["player_score"], "\n",
+        "   [", player_name.upper(), " "*(15 - len(player_name)), "]", " "*(11),
+        "[", rpg_data["boss_name"].upper(), " "*(15 - len(rpg_data["boss_name"])), "]", "\n",
+        "   [ HP :", rpg_data["player_hp"], "/ 50     ]", " "*11, "[ HP : ", rpg_data["enemy_hp"], "/ ",rpg_data["enemy_max_hp"],"  ]\n",
+        "   [ Potions :",("◊")*rpg_data["potion_number"], " "*(5 - rpg_data["potion_number"]), "]", " "*11 , "[", " "*16, "]\n",
         "       ", rpg_data["player_line_1"], "                  ", rpg_data["boss_line_1"], "\n",
         "       ", rpg_data["player_line_2"], "                  ", rpg_data["boss_line_2"], "\n",
         "       ", rpg_data["player_line_3"], "                  ", rpg_data["boss_line_3"], "\n",

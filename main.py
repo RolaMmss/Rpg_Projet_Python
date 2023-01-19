@@ -58,7 +58,7 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
             elif action.lower() == "potion":
                 phrase = player_heals(rpg_data,player_name)
             else:
-                print('Veuillez entrer une action valide')
+                print('Please enter a valid action ')
         
         # Enemy's turn
         else:
@@ -70,8 +70,8 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         phrase = next_level(rpg_data)
 
 display_status(rpg_data, player_name)
-print('\nFin du jeu')
+print('\n End of game !')
 if enemy_is_alive(rpg_data):
-    print ('GAME OVER')
+    print ('----GAME OVER----')
 else:
-    print('Felicitations ')
+    print('----Congrats---- ')
