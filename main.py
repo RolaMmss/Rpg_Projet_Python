@@ -1,4 +1,4 @@
-from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory, display_final
+from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory, display_board
  # Preparing a game
 player_name = input("Choose a name for your avatar : ")
 phrase = ('')
@@ -49,7 +49,7 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         if phrase !=None and phrase != '' :
             print(phrase)
             input()
-        # check which turn
+        # check which turnpip install pygobject
         if rpg_data["turn"]%2 == 0 :   # turn is pair
         # Demand an action from player: Either to attack or to take a potion
             action = input("What do you want to do ? (attack/potion) \n")
@@ -76,6 +76,6 @@ if enemy_is_alive(rpg_data):
 else:
     print('----Congrats---- ')
 
-display_final(rpg_data, player_name)   
+display_board(rpg_data, player_name)   
 
 
