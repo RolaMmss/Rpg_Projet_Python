@@ -28,10 +28,11 @@ def display_status(rpg_data, player_name) ->None:
     """_summary_
     Display characters with names, healths, and potions
     """
-    print(" ",
-        player_name, "                           ", rpg_data["boss_name"], "       ", "SCORE : ", rpg_data["player_score"], "\n",
-        " HP : ", rpg_data["player_hp"], "/ 50                      HP : ", rpg_data["enemy_hp"], "/ ",rpg_data["enemy_max_hp"],"\n",
-        " ",("◊")*rpg_data["potion_number"], "\n",
+    print(" "*24, "SCORE : ", rpg_data["player_score"], "\n",
+        "   [", player_name.upper(), " "*(15 - len(player_name)), "]", " "*(11),
+        "[", rpg_data["boss_name"].upper(), " "*(15 - len(rpg_data["boss_name"])), "]", "\n",
+        "   [ HP :", rpg_data["player_hp"], "/ 50     ]", " "*11, "[ HP : ", rpg_data["enemy_hp"], "/ ",rpg_data["enemy_max_hp"],"  ]\n",
+        "   [ Potions :",("◊")*rpg_data["potion_number"], " "*(5 - rpg_data["potion_number"]), "]", " "*11 , "[", " "*16, "]\n",
         "       ", rpg_data["player_line_1"], "                  ", rpg_data["boss_line_1"], "\n",
         "       ", rpg_data["player_line_2"], "                  ", rpg_data["boss_line_2"], "\n",
         "       ", rpg_data["player_line_3"], "                  ", rpg_data["boss_line_3"], "\n",
