@@ -35,7 +35,7 @@ rpg_data = {
 print("Welcome "+ player_name +". You will face off against the computer!")
 print()
 print('''In this battle you and the computer will take turns battling, the first to fall loses!
-There are potions laying around for you to grab! You may use up to three potions!
+There are potions laying around for you to grab! You may use up to five potions!
 Remember to grab potions BEFORE you attack !''')
 
 # Player setup #
