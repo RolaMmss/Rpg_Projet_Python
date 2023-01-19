@@ -35,7 +35,7 @@ Requirements
 
 Version : 1.0
 
-Auteurs
+Authors
 
     Rola Sadek
     David Breau
