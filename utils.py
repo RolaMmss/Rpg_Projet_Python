@@ -1,8 +1,11 @@
 import csv
 from random import randint
+<<<<<<< HEAD
+=======
 import csv
 from playsound import playsound
 
+>>>>>>> 07d4b473f72a01bc626c74488390717d731381c0
 
 def player_is_alive(rpg_data) -> bool:
     """Checks in rpg_data if player_hp is > 0
@@ -268,7 +271,7 @@ def save_score(rpg_data, player_name):
 
 
 def display_final():
-    if player_is_alive:
+    if player_is_alive():
         pass #affichage en cas de victoire
 
     else:
@@ -300,10 +303,6 @@ def display_final():
         else:
             print('')
     
-
-
-
-
 
 
 
