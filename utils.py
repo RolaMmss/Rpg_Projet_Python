@@ -1,6 +1,5 @@
 import csv
 from random import randint
-import csv
 
 def player_is_alive(rpg_data) -> bool:
     """Checks in rpg_data if player_hp is > 0
@@ -261,7 +260,7 @@ def save_score(rpg_data, player_name):
 
 
 def display_final():
-    if player_is_alive:
+    if player_is_alive():
         pass #affichage en cas de victoire
 
     else:
@@ -293,10 +292,6 @@ def display_final():
         else:
             print('')
     
-
-
-
-
 
 
 
