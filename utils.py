@@ -37,11 +37,12 @@ def display_status(rpg_data, player_name) -> None:
         rpg_data (dict): dict that contains all the data neeed for the game to run adn evolve
         player_name ([type]): var that's not changing during the game, coming from an input at the beginning of the main.py file
     """
-    print(" "*24, "SCORE : ", rpg_data["player_score"], "\n",
-        "   [", player_name.upper(), " "*(15 - len(player_name)), "]", " "*(11),
-        "[", rpg_data["boss_name"].upper(), " "*(15 - len(rpg_data["boss_name"])), "]", "\n",
-        "   [ HP :", rpg_data["player_hp"], "/ 50     ]", " "*11, "[ HP : ", rpg_data["enemy_hp"], "/ ",rpg_data["enemy_max_hp"],"  ]\n",
-        "   [ Potions :",("◊")*rpg_data["potion_number"], " "*(5 - rpg_data["potion_number"]), "]", " "*11 , "[", " "*16, "]\n",
+    print(" "*25, "SCORE : ", rpg_data["player_score"], "\n",
+        "   [", player_name.upper(), " "*(16 - len(player_name)), "]", " "*(11),
+        "[", rpg_data["boss_name"].upper(), " "*(16 - len(rpg_data["boss_name"])), "]", "\n",
+        "   [ HP :", rpg_data["player_hp"], "/ 50      ]", " "*11,
+        "[ HP : ", rpg_data["enemy_hp"], "/ ",rpg_data["enemy_max_hp"], " "*(3 - len(str(rpg_data["enemy_hp"]))) ,"]\n",
+        "   [ Potions :",("◊")*rpg_data["potion_number"], " "*(6 - rpg_data["potion_number"]), "]", " "*11 , "[", " "*17, "]\n",
         "       ", rpg_data["player_line_1"], "                  ", rpg_data["boss_line_1"], "\n",
         "       ", rpg_data["player_line_2"], "                  ", rpg_data["boss_line_2"], "\n",
         "       ", rpg_data["player_line_3"], "                  ", rpg_data["boss_line_3"], "\n",
@@ -133,6 +134,37 @@ def ennemys_turn(rpg_data,player_name) -> str:
             if rpg_data["player_hp"] < 0:
                 rpg_data["player_hp"]= 0
             return f'{rpg_data["boss_name"]} hit {player_name} with his spear ! -{degats} HP'
+        
+    elif rpg_data["level"] == 3:
+        choix = randint(0,5)
+        if choix == 2 or choix ==3:
+            degats = 17 + randint(0,3)
+            rpg_data["player_hp"] -= degats
+            rpg_data["turn"] += 1
+            if rpg_data["player_hp"] < 0:
+                rpg_data["player_hp"]= 0
+            if rpg_data["enemy_hp"] > 100:
+                rpg_data["enemy"]= 100
+            return f'{rpg_data["boss_name"]} throws fire to {player_name} ! -{degats} HP '
+        
+        elif choix == 4:
+            degats = 0
+            rpg_data["player_hp"] -= degats
+            rpg_data["turn"] += 1
+            if rpg_data["player_hp"] < 0:
+                rpg_data["player_hp"]= 0
+            if rpg_data["enemy_hp"] > 100:
+                rpg_data["enemy"]= 100
+            return f'{rpg_data["boss_name"]} missed !'
+        
+        else:
+            degats = 12+randint(0,8)
+            rpg_data["player_hp"] -= degats
+            rpg_data["turn"]+=1
+            if rpg_data["player_hp"] < 0:
+                rpg_data["player_hp"]= 0
+            return f'{rpg_data["boss_name"]} hit {player_name} with his claws ! -{degats} HP'
+
 
     
 def all_enemies_dead(rpg_data) -> bool:
@@ -144,7 +176,7 @@ def all_enemies_dead(rpg_data) -> bool:
     Returns:
         bool: returns True if you defeated the last level, else return False
     """
-    max_level = 2
+    max_level = 3
     if rpg_data["level"] == max_level and not enemy_is_alive(rpg_data): #Test si on est au niveau Max (en l'occurence 2)
         return True
     return False
@@ -178,6 +210,24 @@ def next_level(rpg_data):
         rpg_data["boss_line_9"] = "    \\\ , ||    \|  "
         rpg_data["boss_line_10"] ="     \/ ||    ||  "
         return 'Level 2 - CENTAUR INCOMING !!!'
+    
+    elif rpg_data["level"] == 3:          #LEVEL 3
+        rpg_data["player_hp"] = 50
+        rpg_data["enemy_hp"] = 100
+        rpg_data["enemy_max_hp"] = 100
+        rpg_data["turn"] = 0
+        rpg_data["boss_name"] = "Safia" 
+        rpg_data["boss_line_1"] = "              \.        `.         `.   " #39 caractères de large
+        rpg_data["boss_line_2"] = "      (,,(,    \.         `.   ____,-`.,"
+        rpg_data["boss_line_3"] = "   (,'     `/   \.   ,--.___`.'         "
+        rpg_data["boss_line_4"] = ",  ,'  ,--.  `,   \.;'         `        "
+        rpg_data["boss_line_5"] = " `{D, {    \  :    \;                   "
+        rpg_data["boss_line_6"] = "   V,,'    /  /    //                   "
+        rpg_data["boss_line_7"] = "   j;;    /  ,' ,-//.    ,---.      ,   "
+        rpg_data["boss_line_8"] = "   \;'   /  ,' /  _  \  /  _  \   ,'/   "
+        rpg_data["boss_line_9"] = "         \   `'  / \  `'  / \  `.' /    "
+        rpg_data["boss_line_10"] ="          `.___,'   `.__,'   `.__,'     "
+        return 'DRAGON INCOMING !!!'
 
 
 def display_victory(rpg_data) -> None:
