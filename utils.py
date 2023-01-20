@@ -65,7 +65,7 @@ def player_attack(rpg_data, player_name) -> str:
     Returns:
         str: sentence that must be displayed under the display_status via the phrase var
     """
-    playsound('media/NRFQVRF-kick-041.mp3')
+    playsound('media/attack.mp3')
     degats = 15 + randint(0,10)
     rpg_data["enemy_hp"] -= degats
     rpg_data["player_score"] += degats
@@ -263,7 +263,7 @@ def save_score(rpg_data, player_name):
 
 
 def display_final():
-    if player_is_alive():
+    if player_is_alive(rpg_data):
         pass #affichage en cas de victoire
 
     else:
