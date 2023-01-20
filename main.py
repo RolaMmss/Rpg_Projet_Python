@@ -76,6 +76,6 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         input()
         phrase = next_level(rpg_data)
 
-
-save_score(rpg_data,player_name)
 display_final(rpg_data)
+save_score(rpg_data,player_name)
+
