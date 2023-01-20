@@ -112,7 +112,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
     """
     
     if rpg_data["level"] == 1:
-        playsound('media/ghost.mp3')
+        playsound('media/GHOST.mp3')
         degats = 7+randint(0,8)
         rpg_data["player_hp"] -= (degats)
         rpg_data["turn"]+=1
@@ -142,7 +142,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
             return f'{rpg_data["boss_name"]} hit {player_name} with his spear ! -{degats} HP'
         
     elif rpg_data["level"] == 3:
-        playsound('media/dragonfire.mp3')
+        playsound('media/FIRE2.mp3')
         choix = randint(0,5)
         if choix == 2 or choix ==3:
             degats = 17 + randint(0,3)
@@ -197,7 +197,7 @@ def next_level(rpg_data):
     Returns:
         str: returns the sentence that must be displayed une display_status via the phrase var
     """
-    playsound('media/goodresult-82807.mp3')
+    # playsound('media/goodresult-82807.mp3')
     rpg_data["level"] += 1
     
     if rpg_data["level"] == 2:          #LEVEL 2
@@ -254,7 +254,7 @@ def display_victory(rpg_data) -> None:
     "\n       ", rpg_data["player_line_8"],
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
-    # playsound('media/goodresult-82807.mp3')
+    playsound('media/player_dead.mp3')
 
 
 
@@ -270,39 +270,38 @@ def save_score(rpg_data, player_name):
 
 
 
-# def display_final():
-#     if player_is_alive():
-#         pass #affichage en cas de victoire
-
-#     else:
-#         pass #affichage en cas de defaite
+def display_final(rpg_data):
+    if player_is_alive(rpg_data):
+        playsound('media/medieval-fanfare.mp3')
+    else:
+        playsound('media/player_dead.mp3')
+        #pass #affichage en cas de defaite
     
-#     with open ('score.csv', 'r') as file:
-#         reader=csv.reader(file)
-#         scores = list(reader)
-#         sorted_scores = sorted(scores, key = lambda x : x[0], reverse = True)
+    with open ('score.csv', 'r') as file:
+        reader=csv.reader(file)
+        scores = list(reader)
+        sorted_scores = sorted(scores, key = lambda x : x[0], reverse = True)
     
-#     trophy_l1 = f'  _______  '
-#     trophy_l2 = f' |  N°1  | '
-#     trophy_l3 = f'(|{" "*(3-len(sorted_scores[0][1])//2)}{sorted_scores[0][1][:7]}{" "*(int(4-len(sorted_scores[0][1])/2))}|)'
-#     trophy_l4 = f' |  {sorted_scores[0][0][:5]}  | '
-#     trophy_l5 = f'  \     /  '
-#     trophy_l6 = f"   `---'   "
-#     trophy_l7 = f'   _|_|_   '
+    trophy_l1 = f'  _______  '
+    trophy_l2 = f' |  N°1  | '
+    trophy_l3 = f'(|{" "*(3-len(sorted_scores[0][1])//2)}{sorted_scores[0][1][:7]}{" "*(int(4-len(sorted_scores[0][1])/2))}|)'
+    trophy_l4 = f' |  {sorted_scores[0][0][:5]}  | '
+    trophy_l5 = f'  \     /  '
+    trophy_l6 = f"   `---'   "
+    trophy_l7 = f'   _|_|_   '
 
-#     print(
-#         '\n    Thanks for playing !\n',
-#         '  //    HIGHSCORES    \\\ ')
-#     for i in range(7):
-#         print(str(eval(f'trophy_l{i+1}')+'     '),end='')
-#         if i!=0:
-#             try:
-#                 print(f'{i+1}. {" ".join(sorted_scores[i])}')
-#             except:
-#                 print('')
-#         else:
-#             print('')
-#     playsound('media/medieval-fanfare.mp3')
+    print(
+        '\n    Thanks for playing !\n',
+        '  //    HIGHSCORES    \\\ ')
+    for i in range(7):
+        print(str(eval(f'trophy_l{i+1}')+'     '),end='')
+        if i!=0:
+            try:
+                print(f'{i+1}. {" ".join(sorted_scores[i])}')
+            except:
+                print('')
+        else:
+            print('')
 
 
 
