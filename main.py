@@ -2,7 +2,14 @@ from utils import player_is_alive, enemy_is_alive, display_status, player_attack
 from playsound import playsound
 
  # Preparing a game
-player_name = input("Choose a name for your avatar : ")
+while True:
+    player_name = input("Choose a name for your avatar : ")
+
+    if len(player_name) > 16:
+        print('Enter a maximum of 16 characters.')
+        continue
+    else:
+        break
 phrase = ('')
 rpg_data = {
     "level" : 1,
