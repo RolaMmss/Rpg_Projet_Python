@@ -66,7 +66,15 @@ def player_attack(rpg_data, player_name) -> str:
     Returns:
         str: sentence that must be displayed under the display_status via the phrase var
     """
-    playsound('media/attack.mp3')
+    random_attack_sound = randint(0,3)
+    if random_attack_sound == 0:
+        playsound('media/ATTACK.mp3')
+    elif random_attack_sound == 1:
+        playsound('media/SWORD.mp3')
+    elif random_attack_sound == 2:
+        playsound('media/SWORD2.mp3')
+    elif random_attack_sound == 3:
+        playsound('media/KNIFE.mp3')        
     degats = 15 + randint(0,10)
     rpg_data["enemy_hp"] -= degats
     rpg_data["player_score"] += degats
