@@ -66,7 +66,7 @@ def player_attack(rpg_data, player_name) -> str:
     Returns:
         str: sentence that must be displayed under the display_status via the phrase var
     """
-    playsound('media/NRFQVRF-kick-041.mp3')
+    playsound('media/attack.mp3')
     degats = 15 + randint(0,10)
     rpg_data["enemy_hp"] -= degats
     rpg_data["player_score"] += degats
@@ -272,6 +272,28 @@ def save_score(rpg_data, player_name):
 
 def display_final(rpg_data):
     if player_is_alive(rpg_data):
+        print(
+            " __     ______  _    _  __          _______ _   _    _ \n",
+            " \ \   / / __ \| |  | | \ \        / /_   _| \ | |  | |\n",
+            "  \ \_/ / |  | | |  | |  \ \  /\  / /  | | |  \| |  | |\n",
+            "   \   /| |  | | |  | |   \ \/  \/ /   | | | . ` |  | |\n",
+            "    | | | |__| | |__| |    \  /\  /   _| |_| |\  |  |_|\n",
+            "    |_|  \____/ \____/      \/  \/   |_____|_| \_|  (_)\n"
+        )
+        playsound("media/medieval-fanfare")
+
+    else:
+        print(
+            "  _____                         ____  \n",
+            " / ____|                       / __ \  \n",
+            "| |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __ \n",
+            "| | |_ |/ _` | '_ ` _ \ / _ \ | |  | \ \ / / _ \ '__|\n",
+            "| |__| | (_| | | | | | |  __/ | |__| |\ V /  __/ |   \n",
+            " \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|   \n"
+        )
+        playsound("media/player_dead")
+def display_final(rpg_data):
+    if player_is_alive(rpg_data):
         playsound('media/medieval-fanfare.mp3')
     else:
         playsound('media/player_dead.mp3')
@@ -302,7 +324,4 @@ def display_final(rpg_data):
                 print('')
         else:
             print('')
-
-
-
 
