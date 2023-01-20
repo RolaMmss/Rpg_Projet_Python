@@ -266,6 +266,7 @@ def display_victory(rpg_data, play = True) -> None:
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
     if play:
+        playsound('media/player_dead.mp3')
         playsound('media/goodresult-82807.mp3')
 
 
@@ -293,7 +294,7 @@ def display_final(rpg_data, play = True):
             "    |_|  \____/ \____/      \/  \/   |_____|_| \_|  (_)\n"
         )
         if play:
-            playsound("media/medieval-fanfare")
+            playsound("media/medieval-fanfare.mp3")
 
     else:
         print(
@@ -305,7 +306,7 @@ def display_final(rpg_data, play = True):
             " \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|   \n"
         )
         if play:
-            playsound("media/player_dead")
+            playsound("media/player_dead.mp3")
 
     with open ('score.csv', 'r') as file:
         reader=csv.reader(file)
