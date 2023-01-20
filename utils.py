@@ -120,7 +120,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
     """
     
     if rpg_data["level"] == 1:
-        playsound('media/GHOST.mp3')
+        playsound('media/ghost_attack.mp3')
         degats = 7+randint(0,8)
         rpg_data["player_hp"] -= (degats)
         rpg_data["turn"]+=1
