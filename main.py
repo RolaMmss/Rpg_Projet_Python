@@ -59,10 +59,10 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         # check which turnpip install pygobject
         if rpg_data["turn"]%2 == 0 :   # turn is pair
         # Demand an action from player: Either to attack or to take a potion
-            action = input("What do you want to do ? (attack/potion) \n")
-            if action.lower() == "attack":
+            action = input("What do you want to do ? (Attack [A]/ Potion [P]) \n")
+            if action.lower() == "attack" or action.lower() == "a":
                 phrase = player_attack(rpg_data,player_name)
-            elif action.lower() == "potion":
+            elif action.lower() == "potion" or action.lower() == "p":
                 phrase = player_heals(rpg_data,player_name)
             else:
                 print('Please enter a valid action ')
