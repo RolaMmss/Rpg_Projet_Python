@@ -120,7 +120,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
     """
     
     if rpg_data["level"] == 1:
-        playsound('media/ghost.mp3')
+        playsound('media/GHOST.mp3')
         degats = 7+randint(0,8)
         rpg_data["player_hp"] -= (degats)
         rpg_data["turn"]+=1
@@ -150,7 +150,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
             return f'{rpg_data["boss_name"]} hit {player_name} with his spear ! -{degats} HP'
         
     elif rpg_data["level"] == 3:
-        playsound('media/dragonfire.mp3')
+        playsound('media/FIRE2.mp3')
         choix = randint(0,5)
         if choix == 2 or choix ==3:
             degats = 17 + randint(0,3)
@@ -205,7 +205,7 @@ def next_level(rpg_data):
     Returns:
         str: returns the sentence that must be displayed une display_status via the phrase var
     """
-    playsound('media/goodresult-82807.mp3')
+    # playsound('media/goodresult-82807.mp3')
     rpg_data["level"] += 1
     
     if rpg_data["level"] == 2:          #LEVEL 2
@@ -262,7 +262,7 @@ def display_victory(rpg_data) -> None:
     "\n       ", rpg_data["player_line_8"],
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
-    # playsound('media/goodresult-82807.mp3')
+    playsound('media/player_dead.mp3')
 
 
 
@@ -300,6 +300,12 @@ def display_final(rpg_data):
             " \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|   \n"
         )
         playsound("media/player_dead")
+def display_final(rpg_data):
+    if player_is_alive(rpg_data):
+        playsound('media/medieval-fanfare.mp3')
+    else:
+        playsound('media/player_dead.mp3')
+        #pass #affichage en cas de defaite
     
     with open ('score.csv', 'r') as file:
         reader=csv.reader(file)
