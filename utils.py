@@ -94,7 +94,7 @@ def player_heals(rpg_data, player_name) -> str:
     Returns:
         str: returns the sentence that must be displayed une display_status via the phrase var
     """
-    playsound('media/quick-pour-86306.mp3')
+    playsound('media/potion.mp3')
 
     soins = 30+randint(0,10)
     if rpg_data["potion_number"] >= 1:
@@ -120,7 +120,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
     """
     
     if rpg_data["level"] == 1:
-        playsound('media/ghost.mp3')
+        playsound('media/GHOST2.mp3')
         degats = 7+randint(0,8)
         rpg_data["player_hp"] -= (degats)
         rpg_data["turn"]+=1
@@ -129,7 +129,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
         return f'{rpg_data["boss_name"]} hit {player_name} ! Ouch ! -{degats} HP'
 
     elif rpg_data["level"] == 2:
-        playsound('media/centaur.mp3')
+        playsound('media/STRONGHIT.mp3')
         choix = randint(0,3)
         if choix == 2:
             degats = 7 + randint(0,3)
