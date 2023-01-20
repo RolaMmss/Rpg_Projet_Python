@@ -278,40 +278,52 @@ def save_score(rpg_data, player_name):
 
 
 
-# def display_final():
-#     if player_is_alive():
-#         pass #affichage en cas de victoire
+def display_final(rpg_data):
+    if player_is_alive(rpg_data):
+        print(
+            " __     ______  _    _  __          _______ _   _    _ \n",
+            " \ \   / / __ \| |  | | \ \        / /_   _| \ | |  | |\n",
+            "  \ \_/ / |  | | |  | |  \ \  /\  / /  | | |  \| |  | |\n",
+            "   \   /| |  | | |  | |   \ \/  \/ /   | | | . ` |  | |\n",
+            "    | | | |__| | |__| |    \  /\  /   _| |_| |\  |  |_|\n",
+            "    |_|  \____/ \____/      \/  \/   |_____|_| \_|  (_)\n"
+        )
+        playsound("media/medieval-fanfare")
 
-#     else:
-#         pass #affichage en cas de defaite
+    else:
+        print(
+            "  _____                         ____  \n",
+            " / ____|                       / __ \  \n",
+            "| |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __ \n",
+            "| | |_ |/ _` | '_ ` _ \ / _ \ | |  | \ \ / / _ \ '__|\n",
+            "| |__| | (_| | | | | | |  __/ | |__| |\ V /  __/ |   \n",
+            " \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|   \n"
+        )
+        playsound("media/player_dead")
     
-#     with open ('score.csv', 'r') as file:
-#         reader=csv.reader(file)
-#         scores = list(reader)
-#         sorted_scores = sorted(scores, key = lambda x : x[0], reverse = True)
+    with open ('score.csv', 'r') as file:
+        reader=csv.reader(file)
+        scores = list(reader)
+        sorted_scores = sorted(scores, key = lambda x : x[0], reverse = True)
     
-#     trophy_l1 = f'  _______  '
-#     trophy_l2 = f' |  N°1  | '
-#     trophy_l3 = f'(|{" "*(3-len(sorted_scores[0][1])//2)}{sorted_scores[0][1][:7]}{" "*(int(4-len(sorted_scores[0][1])/2))}|)'
-#     trophy_l4 = f' |  {sorted_scores[0][0][:5]}  | '
-#     trophy_l5 = f'  \     /  '
-#     trophy_l6 = f"   `---'   "
-#     trophy_l7 = f'   _|_|_   '
+    trophy_l1 = f'  _______  '
+    trophy_l2 = f' |  N°1  | '
+    trophy_l3 = f'(|{" "*(3-len(sorted_scores[0][1])//2)}{sorted_scores[0][1][:7]}{" "*(int(4-len(sorted_scores[0][1])/2))}|)'
+    trophy_l4 = f' |  {sorted_scores[0][0][:5]}  | '
+    trophy_l5 = f'  \     /  '
+    trophy_l6 = f"   `---'   "
+    trophy_l7 = f'   _|_|_   '
 
-#     print(
-#         '\n    Thanks for playing !\n',
-#         '  //    HIGHSCORES    \\\ ')
-#     for i in range(7):
-#         print(str(eval(f'trophy_l{i+1}')+'     '),end='')
-#         if i!=0:
-#             try:
-#                 print(f'{i+1}. {" ".join(sorted_scores[i])}')
-#             except:
-#                 print('')
-#         else:
-#             print('')
-#     playsound('media/medieval-fanfare.mp3')
-
-
-
+    print(
+        '\n    Thanks for playing !\n',
+        '  //    HIGHSCORES    \\\ ')
+    for i in range(7):
+        print(str(eval(f'trophy_l{i+1}')+'     '),end='')
+        if i!=0:
+            try:
+                print(f'{i+1}. {" ".join(sorted_scores[i])}')
+            except:
+                print('')
+        else:
+            print('')
 

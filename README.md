@@ -19,7 +19,7 @@ The game runs via main.py.
     - If the player chooses to attack, enemy's health decreases randomly. Python generates this random amount.
     - If the player chooses to take a potion, his health increases randomly and number of potions decreases by 1.
     - If the player supplies an invalid action, a message is displayed : "Please enter a valid action".
-<!-- 2- If it is enemy's turn, a choice is generated: either to attack (75%) and the player randomly looses HP (7-15 HP) or to recover (25%) and in this case the enemy randomly gains HP (7-10 HP) and the player randomly looses HP (7-10 HP). -->
+<!-- 2- If it is enemy's turn, depending on what monster you're facing a choice is generated: either to attack (75%) and the player randomly looses HP (7-15 HP) or to recover (25%) and in this case the enemy randomly gains HP (7-10 HP) and the player randomly looses HP (7-10 HP). -->
 
 ### End of game: ### 
     1- Once the enemy's HP becomes zero, the player wins first level and a new level starts with a different enemy.
@@ -36,7 +36,7 @@ The game runs via main.py.
 ### Authors: ### 
     Rola Sadek
     David Breau
-    Maxime ...
+    Maxime Rowell
 
 
 
