@@ -108,7 +108,7 @@ def player_heals(rpg_data, player_name) -> str:
     else:
         print("You don't have enough potions !")
 
-def ennemys_turn(rpg_data,player_name) -> str:
+def ennemys_turn(rpg_data,player_name, play = True) -> str:
     """plays enemy's turn., depending on rpg_data["level"], decrease player's HP and in some came, increase enemy's HP
 
     Args:
@@ -120,7 +120,8 @@ def ennemys_turn(rpg_data,player_name) -> str:
     """
     
     if rpg_data["level"] == 1:
-        playsound('media/GHOST2.mp3')
+        if play:
+            playsound('media/GHOST.mp3')
         degats = 7+randint(0,8)
         rpg_data["player_hp"] -= (degats)
         rpg_data["turn"]+=1
@@ -129,7 +130,8 @@ def ennemys_turn(rpg_data,player_name) -> str:
         return f'{rpg_data["boss_name"]} hit {player_name} ! Ouch ! -{degats} HP'
 
     elif rpg_data["level"] == 2:
-        playsound('media/STRONGHIT.mp3')
+        if play:
+            playsound('media/STRONGHIT.mp3')
         choix = randint(0,3)
         if choix == 2:
             degats = 7 + randint(0,3)
@@ -150,7 +152,8 @@ def ennemys_turn(rpg_data,player_name) -> str:
             return f'{rpg_data["boss_name"]} hit {player_name} with his spear ! -{degats} HP'
         
     elif rpg_data["level"] == 3:
-        playsound('media/FIRE2.mp3')
+        if play:
+            playsound('media/FIRE2.mp3')
         choix = randint(0,5)
         if choix == 2 or choix ==3:
             degats = 17 + randint(0,3)
@@ -245,7 +248,7 @@ def next_level(rpg_data):
         return 'DRAGON INCOMING !!!'
 
 
-def display_victory(rpg_data) -> None:
+def display_victory(rpg_data, play = True) -> None:
     """displays congrats message, your score and which level you're going to beat after
 
     Args:
@@ -262,7 +265,8 @@ def display_victory(rpg_data) -> None:
     "\n       ", rpg_data["player_line_8"],
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
-    playsound('media/player_dead.mp3')
+    if play:
+        playsound('media/goodresult-82807.mp3')
 
 
 
@@ -278,7 +282,7 @@ def save_score(rpg_data, player_name):
 
 
 
-def display_final(rpg_data):
+def display_final(rpg_data, play = True):
     if player_is_alive(rpg_data):
         print(
             " __     ______  _    _  __          _______ _   _    _ \n",
@@ -288,7 +292,8 @@ def display_final(rpg_data):
             "    | | | |__| | |__| |    \  /\  /   _| |_| |\  |  |_|\n",
             "    |_|  \____/ \____/      \/  \/   |_____|_| \_|  (_)\n"
         )
-        playsound("media/medieval-fanfare")
+        if play:
+            playsound("media/medieval-fanfare")
 
     else:
         print(
@@ -299,12 +304,15 @@ def display_final(rpg_data):
             "| |__| | (_| | | | | | |  __/ | |__| |\ V /  __/ |   \n",
             " \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|   \n"
         )
-        playsound("media/player_dead")
+        if play:
+            playsound("media/player_dead")
 def display_final(rpg_data):
     if player_is_alive(rpg_data):
-        playsound('media/medieval-fanfare.mp3')
+        if play:
+            playsound('media/medieval-fanfare.mp3')
     else:
-        playsound('media/player_dead.mp3')
+        if play:
+            playsound('media/player_dead.mp3')
         #pass #affichage en cas de defaite
     
     with open ('score.csv', 'r') as file:
