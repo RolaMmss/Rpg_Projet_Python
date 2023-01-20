@@ -29,7 +29,7 @@ The game runs via main.py.
 ### Requirements: ### 
     Visual Studio Code - code editor
     Python - Interpreted programming language.
-    Pysound module - "pip install pysound" (pip3 if unknown command) in the terminal then follow the instructions, you may need to update to PyObjC if you get errors for missing audio files
+    Playsound module - "pip install playsound" (pip3 if unknown command) in the terminal then follow the instructions, you may need to update to PyObjC if you get errors for missing audio files
 
 
 ### Version : 1.0
