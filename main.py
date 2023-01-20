@@ -1,4 +1,4 @@
-from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory, save_score, display_final
+from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, enemys_turn ,next_level, all_enemies_dead, display_victory, save_score, display_final
 from playsound import playsound
 
  # Preparing a game
@@ -59,23 +59,22 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         # check which turnpip install pygobject
         if rpg_data["turn"]%2 == 0 :   # turn is pair
         # Demand an action from player: Either to attack or to take a potion
-            action = input("What do you want to do ? (attack/potion) \n")
-            if action.lower() == "attack":
+            action = input("What do you want to do ? (Attack [A]/ Potion [P]) \n")
+            if action.lower() == "attack" or action.lower() == "a":
                 phrase = player_attack(rpg_data,player_name)
-            elif action.lower() == "potion":
+            elif action.lower() == "potion" or action.lower() == "p":
                 phrase = player_heals(rpg_data,player_name)
             else:
                 print('Please enter a valid action ')
         
         # Enemy's turn
         else:
-            phrase = ennemys_turn(rpg_data, player_name)
+            phrase = enemys_turn(rpg_data, player_name)
     
     else:
         display_victory(rpg_data)
         input()
         phrase = next_level(rpg_data)
 
+display_final(rpg_data, player_name)
 
-save_score(rpg_data,player_name)
-display_final(rpg_data)
