@@ -266,7 +266,6 @@ def display_victory(rpg_data, play = True) -> None:
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
     if play:
-        playsound('media/player_dead.mp3')
         playsound('media/goodresult-82807.mp3')
 
 
@@ -283,7 +282,7 @@ def save_score(rpg_data, player_name):
 
 
 
-def display_final(rpg_data, play = True):
+def display_final(rpg_data, player_name, play = True):
     if player_is_alive(rpg_data):
         print(
             " __     ______  _    _  __          _______ _   _    _ \n",
@@ -307,7 +306,7 @@ def display_final(rpg_data, play = True):
         )
         if play:
             playsound("media/player_dead.mp3")
-
+    save_score(rpg_data, player_name)
     with open ('score.csv', 'r') as file:
         reader=csv.reader(file)
         scores = list(reader)
