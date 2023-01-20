@@ -1,5 +1,6 @@
 import csv
 from random import randint
+import csv
 from playsound import playsound
 
 
@@ -85,6 +86,8 @@ def player_heals(rpg_data, player_name) -> str:
     Returns:
         str: returns the sentence that must be displayed une display_status via the phrase var
     """
+    playsound('media/quick-pour-86306.mp3')
+
     soins = 30+randint(0,10)
     if rpg_data["potion_number"] >= 1:
         rpg_data["potion_number"] -= 1
@@ -109,6 +112,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
     """
     
     if rpg_data["level"] == 1:
+        playsound('media/ghost.mp3')
         degats = 7+randint(0,8)
         rpg_data["player_hp"] -= (degats)
         rpg_data["turn"]+=1
@@ -117,6 +121,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
         return f'{rpg_data["boss_name"]} hit {player_name} ! Ouch ! -{degats} HP'
 
     elif rpg_data["level"] == 2:
+        playsound('media/centaur.mp3')
         choix = randint(0,3)
         if choix == 2:
             degats = 7 + randint(0,3)
@@ -137,6 +142,7 @@ def ennemys_turn(rpg_data,player_name) -> str:
             return f'{rpg_data["boss_name"]} hit {player_name} with his spear ! -{degats} HP'
         
     elif rpg_data["level"] == 3:
+        playsound('media/dragonfire.mp3')
         choix = randint(0,5)
         if choix == 2 or choix ==3:
             degats = 17 + randint(0,3)
@@ -191,7 +197,7 @@ def next_level(rpg_data):
     Returns:
         str: returns the sentence that must be displayed une display_status via the phrase var
     """
-    
+    playsound('media/goodresult-82807.mp3')
     rpg_data["level"] += 1
     
     if rpg_data["level"] == 2:          #LEVEL 2
@@ -248,11 +254,13 @@ def display_victory(rpg_data) -> None:
     "\n       ", rpg_data["player_line_8"],
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
+    # playsound('media/goodresult-82807.mp3')
+
 
 
 def save_score(rpg_data, player_name):
     print(f'Your score is {rpg_data["player_score"]}')
-    if input('Do you want to save your score ? (Y/N) ') == 'Y' :
+    if input('Do you want to save your score ? (Y/N) ').upper() == 'Y' :
         
         with open ('score.csv', 'a') as file:
             writing = csv.writer(file)
@@ -262,12 +270,28 @@ def save_score(rpg_data, player_name):
 
 
 
-def display_final():
+def display_final(rpg_data):
     if player_is_alive(rpg_data):
-        pass #affichage en cas de victoire
+        print(
+            " __     ______  _    _  __          _______ _   _    _ \n",
+            " \ \   / / __ \| |  | | \ \        / /_   _| \ | |  | |\n",
+            "  \ \_/ / |  | | |  | |  \ \  /\  / /  | | |  \| |  | |\n",
+            "   \   /| |  | | |  | |   \ \/  \/ /   | | | . ` |  | |\n",
+            "    | | | |__| | |__| |    \  /\  /   _| |_| |\  |  |_|\n",
+            "    |_|  \____/ \____/      \/  \/   |_____|_| \_|  (_)\n"
+        )
+        playsound("media/medieval-fanfare")
 
     else:
-        pass #affichage en cas de defaite
+        print(
+            "  _____                         ____  \n",
+            " / ____|                       / __ \  \n",
+            "| |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __ \n",
+            "| | |_ |/ _` | '_ ` _ \ / _ \ | |  | \ \ / / _ \ '__|\n",
+            "| |__| | (_| | | | | | |  __/ | |__| |\ V /  __/ |   \n",
+            " \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|   \n"
+        )
+        playsound("media/player_dead")
     
     with open ('score.csv', 'r') as file:
         reader=csv.reader(file)
@@ -294,8 +318,4 @@ def display_final():
                 print('')
         else:
             print('')
-    
-
-
-
 

@@ -1,4 +1,6 @@
-from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory, save_score, display_final
+from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory, save_score#, display_final
+from playsound import playsound
+
  # Preparing a game
 player_name = input("Choose a name for your avatar : ")
 phrase = ('')
@@ -33,16 +35,16 @@ rpg_data = {
     "player_line_10" : "   \    I_  "
 }
 
-print("Welcome "+ player_name +"in Escape from Simplon")
+print("Welcome "+ player_name +" in Escape from Simplon")
 print()
 print('''You're going to face MONSTERS coming to teach you IA things !
 Be careful, it could be really hurtful sometimes, Good luck !''')
-
+playsound('media/goodresult-82807.mp3')
 
 while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # Check hp of both player and enemy
     # Check if enemy is still alive
     if enemy_is_alive(rpg_data):
-        # display the status of player : name, hp, number of potions left      
+        # display the status of player : name, hp, number of potions left        
         display_status(rpg_data, player_name)  
         if phrase !=None and phrase != '' :
             print(phrase)
@@ -69,4 +71,4 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
 
 
 save_score(rpg_data,player_name)
-display_final()
+# display_final()
