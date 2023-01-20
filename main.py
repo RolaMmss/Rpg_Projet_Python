@@ -1,4 +1,4 @@
-from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, ennemys_turn ,next_level, all_enemies_dead, display_victory, save_score, display_final
+from utils import player_is_alive, enemy_is_alive, display_status, player_attack, player_heals, enemys_turn ,next_level, all_enemies_dead, display_victory, save_score, display_final
 from playsound import playsound
 
  # Preparing a game
@@ -69,13 +69,13 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         
         # Enemy's turn
         else:
-            phrase = ennemys_turn(rpg_data, player_name)
+            phrase = enemys_turn(rpg_data, player_name)
     
     else:
         display_victory(rpg_data)
         input()
         phrase = next_level(rpg_data)
 
-
-save_score(rpg_data,player_name)
 display_final(rpg_data)
+save_score(rpg_data,player_name)
+

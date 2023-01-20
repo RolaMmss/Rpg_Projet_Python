@@ -4,7 +4,7 @@ import csv
 from playsound import playsound
 
 
-def player_is_alive(rpg_data) -> bool:
+def player_is_alive(rpg_data) -> bool:                              #Test fait
     """Checks in rpg_data if player_hp is > 0
 
     Args:
@@ -15,7 +15,7 @@ def player_is_alive(rpg_data) -> bool:
     """
     return rpg_data["player_hp"] > 0
 
-def enemy_is_alive(rpg_data) -> bool:
+def enemy_is_alive(rpg_data) -> bool:                               #Test written
     """checks in rpg_data if enemy_hp > 0
 
     Args:
@@ -31,7 +31,7 @@ def enemy_is_alive(rpg_data) -> bool:
         return False
     
 
-def display_status(rpg_data, player_name) -> None:
+def display_status(rpg_data, player_name) -> None:                  #impossible to test
     """Display characters with names, healths, and potions via rpg_data, lines for ascii charac and data like hp etc...
 
     Args:
@@ -56,7 +56,7 @@ def display_status(rpg_data, player_name) -> None:
         "       ", rpg_data["player_line_10"], "                  ", rpg_data["boss_line_10"], "\n",
         )
 
-def player_attack(rpg_data, player_name) -> str:
+def player_attack(rpg_data, player_name, play = True) -> str:                    #Test written
     """if player choosed "attack", enemy_hp decrease randomly by 10-20 HP
 
     Args:
@@ -84,7 +84,7 @@ def player_attack(rpg_data, player_name) -> str:
     return f'{player_name} attacks {rpg_data["boss_name"]}, -{degats} HP'
     
 
-def player_heals(rpg_data, player_name) -> str:
+def player_heals(rpg_data, player_name, play = True) -> str:                     #Test written
     """if player choosed "potion", player_hp increase randomly by 17-25 HP potion_number decrease by 1
 
     Args:
@@ -108,7 +108,7 @@ def player_heals(rpg_data, player_name) -> str:
     else:
         print("You don't have enough potions !")
 
-def ennemys_turn(rpg_data,player_name, play = True) -> str:
+def enemys_turn(rpg_data,player_name, play = True) -> str:
     """plays enemy's turn., depending on rpg_data["level"], decrease player's HP and in some came, increase enemy's HP
 
     Args:
@@ -185,7 +185,7 @@ def ennemys_turn(rpg_data,player_name, play = True) -> str:
 
 
     
-def all_enemies_dead(rpg_data) -> bool:
+def all_enemies_dead(rpg_data) -> bool:                     #Test Written
     """checks in rpg_data if not enemy_is_alive and if the level is the max level
 
     Args:
@@ -195,11 +195,11 @@ def all_enemies_dead(rpg_data) -> bool:
         bool: returns True if you defeated the last level, else return False
     """
     max_level = 3
-    if rpg_data["level"] == max_level and not enemy_is_alive(rpg_data):     #Test si on est au niveau Max (en l'occurence 2)
+    if rpg_data["level"] == max_level and not enemy_is_alive(rpg_data):     #Test si on est au niveau Max (en l'occurence 3)
         return True
     return False
 
-def next_level(rpg_data):
+def next_level(rpg_data, play = True):                                   #Test Written
     """increses the level by 1 and changes data in rpg_data to reset the player's hp andn the boss name life etc
 
     Args:
@@ -266,6 +266,7 @@ def display_victory(rpg_data, play = True) -> None:
     "\n       ", rpg_data["player_line_9"], 
     "\n       ", rpg_data["player_line_10"], )
     if play:
+        playsound('media/player_dead.mp3')
         playsound('media/goodresult-82807.mp3')
 
 
@@ -293,7 +294,7 @@ def display_final(rpg_data, play = True):
             "    |_|  \____/ \____/      \/  \/   |_____|_| \_|  (_)\n"
         )
         if play:
-            playsound("media/medieval-fanfare")
+            playsound("media/medieval-fanfare.mp3")
 
     else:
         print(
@@ -305,16 +306,8 @@ def display_final(rpg_data, play = True):
             " \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|   \n"
         )
         if play:
-            playsound("media/player_dead")
-def display_final(rpg_data, play = True):
-    if player_is_alive(rpg_data):
-        if play:
-            playsound('media/medieval-fanfare.mp3')
-    else:
-        if play:
-            playsound('media/player_dead.mp3')
-        #pass #affichage en cas de defaite
-    
+            playsound("media/player_dead.mp3")
+
     with open ('score.csv', 'r') as file:
         reader=csv.reader(file)
         scores = list(reader)
