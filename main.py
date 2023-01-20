@@ -60,9 +60,9 @@ while player_is_alive(rpg_data) and not all_enemies_dead(rpg_data):          # C
         if rpg_data["turn"]%2 == 0 :   # turn is pair
         # Demand an action from player: Either to attack or to take a potion
             action = input("What do you want to do ? (Attack [A]/ Potion [P]) \n")
-            if action.lower() == "attack" or action.lower() == "a":
+            if action.lower() in ["attack","a"]:
                 phrase = player_attack(rpg_data,player_name)
-            elif action.lower() == "potion" or action.lower() == "p":
+            elif action.lower() in ["potion","p"]:
                 phrase = player_heals(rpg_data,player_name)
             else:
                 print('Please enter a valid action ')
