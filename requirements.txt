@@ -49,3 +49,4 @@ tqdm @ file:///opt/conda/conda-bld/tqdm_1664392687731/work
 traitlets @ file:///croot/traitlets_1671143879854/work
 urllib3 @ file:///croot/urllib3_1670526988650/work
 wcwidth @ file:///Users/ktietz/demo/mc3/conda-bld/wcwidth_1629357192024/work
+playsound == 1.2.2

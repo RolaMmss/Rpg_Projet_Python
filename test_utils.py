@@ -27,16 +27,16 @@ class TestRPGWithUnittest(unittest.TestCase):
         self.assertEqual(enemy_is_alive({"enemy_hp" : 0, "player_score" : 10, "turn" : 4 }), False)
     
     def test_player_attack(self):
-        player_attack(rpg_data,player_name)
+        player_attack(rpg_data,player_name, False)
         self.assertEqual(rpg_data["enemy_hp"], 21)
 
     def test_player_heals(self):
-        player_heals(rpg_data,player_name)
+        player_heals(rpg_data,player_name, False)
         self.assertEqual(rpg_data["player_hp"], 45)
         self.assertEqual(rpg_data["potion_number"], 2)
 
     def test_enemys_turn(self):
-        enemys_turn(rpg_data,player_name)
+        enemys_turn(rpg_data,player_name, False)
         self.assertEqual(rpg_data["player_hp"],12)
 
     def test_all_enemies_dead(self):
@@ -44,6 +44,6 @@ class TestRPGWithUnittest(unittest.TestCase):
         self.assertEqual(all_enemies_dead({"enemy_hp" : 0, "level" : 1, "player_score" : 10, "turn" : 4 }), False)
         self.assertEqual(all_enemies_dead({"enemy_hp" : 0, "level" : 3, "player_score" : 10, "turn" : 4}), True)
 
-    def test_ùnext_level(self): #the ù is used because it will make this test run last (tests run by alphabet order)
-        next_level(rpg_data)
+    def test_ùnext_level(self):  #the ù is used because it will make this test run last (tests run by alphabet order)
+        next_level(rpg_data, False)
         self.assertEqual(rpg_data["level"], 2)
